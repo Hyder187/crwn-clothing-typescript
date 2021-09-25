@@ -19,7 +19,11 @@ const FormInput: React.FC<IFormInput> = ({
       required={required}
       value={value}
     />
-    {label ? <label className={`form-input-label`}>{label}</label> : null}
+    {label ? (
+      <label className={` ${value ? "shrink" : ""} form-input-label`}>
+        {label}
+      </label>
+    ) : null}
   </div>
 );
 

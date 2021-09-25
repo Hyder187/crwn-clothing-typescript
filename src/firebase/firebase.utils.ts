@@ -41,18 +41,23 @@ const firebaseConfig = {
   measurementId: "G-7TGNJRQH8H",
 };
 
-export const createUserProfileDocument = async (userAuth: User) => {
+export const createUserProfileDocument = async (
+  userAuth: User,
+  displayNameSignUp: string = ""
+) => {
   if (!userAuth) return;
 
-  console.log(userAuth.uid);
   const userRef = doc(firestore, `users/${userAuth.uid}`);
 
   const snapShot = await getDoc(userRef);
-  console.log(snapShot);
 
   if (!snapShot.exists()) {
-    const { displayName, email } = userAuth;
+    let { displayName, email } = userAuth;
     const createdAt = new Date();
+
+    if (!displayName) {
+      displayName = displayNameSignUp;
+    }
 
     try {
       await setDoc(userRef, {

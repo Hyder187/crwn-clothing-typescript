@@ -4,6 +4,7 @@ import "./collection-item.styles.scss";
 import { Items } from "../collections-overview/collection.types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
+import CustomButton from "../custom-button/custom-button.component";
 
 type ItemProp = {
   item: Items;
@@ -19,7 +20,7 @@ const CollectionItem = ({ item }: ItemProp) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <button
+      <CustomButton
         onClick={() =>
           dispatch(
             addItem({
@@ -33,7 +34,7 @@ const CollectionItem = ({ item }: ItemProp) => {
         }
       >
         Add to cart
-      </button>
+      </CustomButton>
     </div>
   );
 };

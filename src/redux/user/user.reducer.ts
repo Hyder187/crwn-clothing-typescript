@@ -28,6 +28,21 @@ const userReducer = (
           error: action.payload,
         };
       return state;
+    case UserActionTypes.SIGN_UP_SUCCESS:
+      if (typeof action.payload !== "string")
+        return {
+          ...state,
+          currentUser: action.payload,
+          error: null,
+        };
+      return state;
+    case UserActionTypes.SIGN_UP_FAILURE:
+      if (typeof action.payload === "string")
+        return {
+          ...state,
+          error: action.payload,
+        };
+      return state;
     case UserActionTypes.SIGN_OUT_FAILURE:
       if (typeof action.payload === "string")
         return {
