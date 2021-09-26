@@ -30,6 +30,8 @@ const SignIn = () => {
     event.preventDefault();
 
     dispatch(signInWithEmail({ email, password }));
+
+    setCredentials({ email: "", password: "" });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

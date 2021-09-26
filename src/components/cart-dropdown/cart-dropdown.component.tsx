@@ -11,23 +11,6 @@ import CustomButton from "../custom-button/custom-button.component";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 
-// let cartItems: cartItem[] = [
-//   {
-//     id: 33,
-//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-//     price: 50,
-//     name: "Brim Sneakers",
-//     quantity: 3,
-//   },
-//   {
-//     id: 33,
-//     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-//     price: 50,
-//     name: "Brim Sneakers",
-//     quantity: 3,
-//   },
-// ];
-
 const CartDropdown = () => {
   const history = useHistory();
   const dispatch = useDispatch();

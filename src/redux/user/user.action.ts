@@ -69,6 +69,21 @@ export const signUpFailure = (error: string) => ({
   payload: error,
 });
 
+export const signOutStart = () => ({
+  type: UserActionTypes.SIGN_OUT_START,
+  payload: "",
+});
+
+export const signOutSuccess = () => ({
+  type: UserActionTypes.SIGN_OUT_SUCCESS,
+  payload: "",
+});
+
+export const signOutFailure = (error: string) => ({
+  type: UserActionTypes.SIGN_OUT_FAILURE,
+  payload: error,
+});
+
 export function signInWithGoogleAsync() {
   return async (dispatch: ThunkDispatch<IRoot, void, IUserAction>) => {
     try {
@@ -105,7 +120,7 @@ export function signInWithEmail(emailPassword: IEmailPassword) {
 
       dispatch(emailSignInSuccess(userPayload));
     } catch (error) {
-      dispatch(emailSignInFailure("error"));
+      dispatch(emailSignInFailure("error in signin with email"));
     }
   };
 }
@@ -138,19 +153,14 @@ export function signUpAsync(
   };
 }
 
-// export const checkUserSession = () => ({
-//   type: UserActionTypes.CHECK_USER_SESSION,
-// });
-
-// export const signOutStart = () => ({
-//   type: UserActionTypes.SIGN_OUT_START,
-// });
-
-// export const signOutSuccess = () => ({
-//   type: UserActionTypes.SIGN_OUT_SUCCESS,
-// });
-
-// export const signOutFailure = (error) => ({
-//   type: UserActionTypes.SIGN_OUT_FAILURE,
-//   payload: error,
-// });
+export function signOut() {
+  return async (dispatch: ThunkDispatch<IRoot, void, IUserAction>) => {
+    try {
+      dispatch(signOutStart());
+      await auth.signOut();
+      dispatch(signOutSuccess());
+    } catch (error) {
+      dispatch(signOutFailure("error in signing out"));
+    }
+  };
+}
