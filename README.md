@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Description
+An ecommerce application made with typescript, scss, html 
+
+## Requirements
+
+Node v14+
+
+## Setup instructions
+
+Clone the repository
+
+Run the command
+### `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
